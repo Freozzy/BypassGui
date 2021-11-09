@@ -1,0 +1,37 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Freozzy/KavoUiLibrary/main/KavoUi"))()
+local Window = Library.CreateLib("Sky Bypass | HzEge31", "OrangeTheme")
+
+--Bypass
+local AntiFall = Window:NewTab("Anti Fall")
+local AntiFallSection = AntiFall:NewSection("Part")
+AntiFallSection:NewButton("Create Anti Fall Part", "Anti Fall Part", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/Freozzy/AntiFallPart/main/AntiFall'))()
+end)
+AntiFallSection:NewButton("Destroy Anti Fall Part", "Anti Fall Part", function()
+    game.Workspace.AntiFall:Destroy()
+end)
+local AntiFallSection = AntiFall:NewSection("Settings")
+AntiFallSection:NewSlider("Height", "Change Anti Fall Height", 250, 160, function(a) -- 500 (MaxValue) | 0 (MinValue)
+    game.Workspace.AntiFall.Position = Vector3.new(0,a,0)
+end)
+AntiFallSection:NewSlider("Size", "Change Anti Fall Size", 2000, 500, function(b) -- 500 (MaxValue) | 0 (MinValue)
+    game.Workspace.AntiFall.Size = Vector3.new(b, 0, b)
+end)
+local AntiFallSection = AntiFall:NewSection("Colors")
+AntiFallSection:NewDropdown("Color","Change Anti Fall Color",{"Blue","Orange","Red"},function(v)
+    if v == "Blue" then
+    game.Workspace.AntiFall.BrickColor = BrickColor.new("Bright bluish green")
+    elseif v == "Orange" then
+    game.Workspace.AntiFall.BrickColor = BrickColor.new("Bright orange")
+    elseif v == "Red" then
+    game.Workspace.AntiFall.BrickColor = BrickColor.new("Bright red")
+    end
+    end)
+local AntiFallSection = AntiFall:NewSection("Other")
+AntiFallSection:NewToggle("İnvisible", "Anti Fall Part İnvisible", function(state)
+    if state then
+        game.Workspace.AntiFall.Transparency = 1
+    else
+        game.Workspace.AntiFall.Transparency = 0
+    end
+end)
